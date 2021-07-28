@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -13,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsTo(models.Role, {as: 'role'});
     }
   };
+  
   User.init({
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
