@@ -18,7 +18,9 @@ module.exports = (sequelize, DataTypes) => {
     content: DataTypes.STRING,
     image: DataTypes.STRING,
     categoryId: DataTypes.INTEGER,
-    type: DataTypes.ENUM,
+    type: DataTypes.ENUM({
+      values: ['event', 'news']
+    }),
     deletedAt: DataTypes.DATE
   }, {
     sequelize,
