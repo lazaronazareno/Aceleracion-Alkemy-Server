@@ -13,13 +13,14 @@ const router = Router();
  *
  */
 const { validarCampos } = require('../middleware/validar-campos');
-
+const validateRegister = require('../middleware/validate-register');
 /*****************************************************************************
  *
  * Controller
  *
  */
 const { login } = require('../controllers/auth');
+const registerUser = require('../controllers/registerUser');
 
 /*****************************************************************************
  *
@@ -35,5 +36,6 @@ router.post(
   ],
   login,
 );
+router.post('/register', validateRegister, registerUser.save);
 
 module.exports = router;
