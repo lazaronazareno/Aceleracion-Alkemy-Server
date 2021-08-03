@@ -7,13 +7,13 @@ const registerUser = {
     },
     save: async (req, res) => {
 
-    let userRegistered = await User.findOne({
+    const userRegistered = await User.findOne({
         where: {email:req.body.email}
     })
 
     if(userRegistered) {
         return res.status(400).json({
-            message: "El usuario ya se encuentra registrado.",
+            msg: "El usuario ya se encuentra registrado.",
             ok: false
         });
     }
@@ -32,12 +32,14 @@ const registerUser = {
 
         delete newUser.password
 
-        res.status(200).json(newUser, {
+        res.status(200).json({
+            data: newUser,
             ok: true
         })
         
     } catch (error) {
-        res.status(500).json(error, {
+        res.status(500).json({
+            data: error,
             ok: false
         })
     }
