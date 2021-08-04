@@ -26,7 +26,7 @@ const registerUser = {
             email: req.body.email,
             password: req.body.password,
         }
-        newUser.password = bcrypt.hashSync(newUser.password, 10);
+        newUser.password = await bcrypt.hashSync(newUser.password, 10);
         
         await User.create(newUser);
 
