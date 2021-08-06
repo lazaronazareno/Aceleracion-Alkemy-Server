@@ -14,12 +14,13 @@ const router = Router();
  */
 const { validarCampos } = require('../middleware/validar-campos');
 const validateRegister = require('../middleware/validate-register');
+const verifyToken = require('../middleware/verifyToken');
 /*****************************************************************************
  *
  * Controller
  *
  */
-const { login } = require('../controllers/auth');
+const { login, getUserInfo } = require('../controllers/auth');
 const registerUser = require('../controllers/registerUser');
 
 /*****************************************************************************
@@ -37,5 +38,6 @@ router.post(
   login,
 );
 router.post('/register', validateRegister, registerUser.save);
+router.get('/me', verifyToken, getUserInfo);
 
 module.exports = router;

@@ -54,6 +54,12 @@ const login = async (req, res) => {
   }
 };
 
+const getUserInfo = (req, res) =>{
+  const { user } = req;
+  return res.status(200).json(user);
+}
+
 module.exports = {
   login,
+  getUserInfo
 };
