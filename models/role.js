@@ -11,7 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     /* eslint no-unused-vars: "off" */
     static associate(models) {
-      // define association here
+      Role.belongsToMany(models.user, {
+        as:'user',
+        foreignKey: 'roleId'
+      })
     }
   }
   Role.init(

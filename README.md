@@ -26,3 +26,25 @@ npx sequelize-cli db:seed:all
 ``` bash
 npm start
 ```
+
+## Command to create 20 new users
+``` bash
+  npx sequelize-cli db:seed:all
+
+firstName     | UserId        | RoleId  |
+------------- | ------------- | ------- | 
+John          |    1          |   2     |
+Jack          |    2          |   2     |
+
+
+firstName     | UserId        | RoleId  |
+------------- | ------------- | ------- | 
+Nickolas      |    11         |   1     |
+Georgie       |    12         |   1     |
+
+```
+
+## Command to delete 20 users 
+``` bash
+  npx sequelize-cli db:seed:undo --seed 20210803204330-create-users.js 
+```    
