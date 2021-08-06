@@ -13,7 +13,7 @@ const registerUser = {
 
     if(userRegistered) {
         return res.status(400).json({
-            msg: "El usuario ya se encuentra registrado.",
+            message: "The user is already registered.",
             ok: false
         });
     }

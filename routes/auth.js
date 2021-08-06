@@ -4,7 +4,6 @@
  *
  */
 const { Router } = require('express');
-const { check } = require('express-validator');
 const router = Router();
 
 /*****************************************************************************
@@ -12,7 +11,7 @@ const router = Router();
  * Middlewares
  *
  */
-const { validarCampos } = require('../middleware/validar-campos');
+const validateLogin = require('../middleware/validate-login');
 const validateRegister = require('../middleware/validate-register');
 const verifyToken = require('../middleware/verifyToken');
 /*****************************************************************************
@@ -28,15 +27,7 @@ const registerUser = require('../controllers/registerUser');
  * Routes
  *
  */
-router.post(
-  '/login',
-  [
-    check('email', 'El email es obligatorio').isEmail(),
-    check('password', 'La contraseña es obligatoria').not().isEmpty(),
-    validarCampos,
-  ],
-  login,
-);
+router.post('/login', validateLogin, login);
 router.post('/register', validateRegister, registerUser.save);
 router.get('/me', verifyToken, getUserInfo);
 

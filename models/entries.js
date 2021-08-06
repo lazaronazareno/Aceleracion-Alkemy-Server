@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       image: DataTypes.STRING,
       categoryId: DataTypes.INTEGER,
       type: DataTypes.ENUM({
-        values: ['event', 'news'],
+        values: ['news', 'event'], 
       }),
       deletedAt: DataTypes.DATE,
     },
@@ -31,5 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'Entries',
     },
   );
+  
   return Entries;
+  
 };

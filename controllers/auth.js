@@ -48,7 +48,7 @@ const login = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       ok: false,
-      msg: 'Error desconocido, contacte al administrador',
+      msg: 'Unknown error, contact admin',
       error,
     });
   }
