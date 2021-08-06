@@ -3,6 +3,7 @@
  * Import packages
  *
  */
+
 const { Router } = require('express');
 const router = Router();
 
@@ -12,18 +13,23 @@ const router = Router();
  *
  */
 
+ const newsValidator  = require ('../middleware/validate-news') 
+
 /*****************************************************************************
  *
  * Controller
  *
  */
-const { getNewsList } = require('../controllers/getNewsList');
+
+const { getNewsList,postNews } = require('../controllers/news')
 
 /*****************************************************************************
  *
  * Routes
  *
  */
-router.get('/', getNewsList);
+router.get('/', getNewsList); 
+
+router.post('/',newsValidator, postNews); 
 
 module.exports = router;
