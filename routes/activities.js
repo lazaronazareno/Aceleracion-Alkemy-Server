@@ -15,20 +15,22 @@
  
   const activitiesValidator  = require ('../middleware/validate-activities') 
   const adminValidator = require ('../middleware/verifyAdmin')
+  const tokenValidator = require('../middleware/verifyToken')
  /*****************************************************************************
   *
   * Controller
   *
   */
  
- const { postActivities } = require('../controllers/activities')
+ const { postActivities, updateActivity } = require('../controllers/activities')
  
  /*****************************************************************************
   *
   * Routes
   *
   */
- router.post('/', [adminValidator, activitiesValidator], postActivities); 
+ router.post('/', [tokenValidator,adminValidator, activitiesValidator], postActivities); 
+ router.patch('/:id',[tokenValidator, adminValidator], updateActivity);
  
  
  module.exports = router;

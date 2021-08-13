@@ -31,8 +31,35 @@
      });
    }
  }
+
+ const updateActivity = async (req, res) => {
+   const {id} = req.params; 
+   const data = req.body; 
+
+   try {
+     const activity = await Activities.findByPk(id);
+     if (!activity){
+       return res.status(404).json({
+         ok: false, 
+         msg: `Activity with id: ${id} not found`,
+         error: [] 
+       })
+     }
+     const updatedActivity = await activity.update(data)
+     return res.status(200).json({
+       data: updatedActivity,
+       ok: true
+     }) 
+   }catch(error){
+     return res.status(500).json({
+      ok: false,
+      msg: 'Unknown error, contact admin',
+      error
+     })
+   }
+ }
  
- module.exports = { postActivities }
+ module.exports = { postActivities, updateActivity }
  
  
  
