@@ -37,13 +37,17 @@ const login = async (req, res) => {
     // Elimino la contraseña y la fecha de eliminación
     delete user.password;
     delete user.deletedAt;
-
+    delete user.createdAt; 
+    delete user.updatedAt;
+    delete user.image; 
+    
     const token = jwt.sign(user, process.env.JWT_SECRET_KEY);
 
     // Retorno el token de sesión
     res.json({
       ok: true,
       token,
+      user
     });
   } catch (error) {
     res.status(500).json({

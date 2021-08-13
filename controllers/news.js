@@ -11,6 +11,25 @@ const { Entries } = require('../models/index');
  *
  */
 
+const getNew = async (req, res) => {
+  const {id} = req.params; 
+  try{
+    const entrie = await Entries.findByPk(id)
+    console.log(entrie.dataValues);
+    res.status(200).json({
+      data: entrie.dataValues, 
+      ok: true
+    }); 
+  }catch(error){
+    res.status(500).json({
+      ok: false,
+      msg: 'Unknown error, contact admin',
+      error,
+    });
+  }
+}
+
+
 const getNewsList = async (req, res) => {
   try {
     const entries = await Entries.findAll(
@@ -82,7 +101,7 @@ const updateNews = async (req, res) => {
   }
 }
 
-module.exports = { getNewsList, postNews, updateNews }
+module.exports = { getNewsList, postNews, updateNews, getNew }
 
 
 

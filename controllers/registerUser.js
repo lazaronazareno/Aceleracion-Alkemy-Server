@@ -20,21 +20,18 @@ const registerUser = {
 
     try {
 
-        const newUser ={
-            name : req.body.name,
-            lastname: req.body.lastname,
-            email: req.body.email,
-            password: req.body.password,
-        }
+        const newUser = { ...req.body }
         newUser.password = await bcrypt.hashSync(newUser.password, 10);
         
-        await User.create(newUser);
-
-        delete newUser.password
+        let user= await User.create(newUser);
+        user = user.dataValues; 
+        delete user.password;
+        delete user.updatedAt; 
+        delete user.createdAt; 
 
         res.status(200).json({
-            data: newUser,
-            ok: true
+            ok: true,
+            data: user,
         })
         
     } catch (error) {
