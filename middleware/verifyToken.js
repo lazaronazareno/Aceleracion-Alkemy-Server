@@ -1,16 +1,28 @@
-require('dotenv').config(); 
-const jwt = require('jsonwebtoken'); 
+// require('dotenv').config();
+const jwt = require('jsonwebtoken');
 
-function verifyJWT(req, res, next, callback){
-	const authHeader = req.headers.authorization; 
-	const token = authHeader && authHeader.split(' ')[1]; 
+const verifyJWT = (req, res, next) => {
+  const token = req.headers.authorization;
 
-	if (token == null) return res.status(401).send({ error: 'No autorizado' }); 
-    
-	jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user) => {
-		callback(user, err)
-		next(); 
-	});
-}
+  if (!token) {
+    return res.status(401).json({
+      ok: false,
+      data: 'Token is required',
+    });
+  }
 
-module.exports = verifyJWT; 
+  try {
+    const user = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+    req.user = user;
+
+    next();
+  } catch (error) {
+    return res.status(401).json({
+      ok: false,
+      msg: 'Invalid token',
+    });
+  }
+};
+
+module.exports = verifyJWT;

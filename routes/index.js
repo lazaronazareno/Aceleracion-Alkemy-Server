@@ -13,6 +13,7 @@ const router = express.Router();
  */
 router.use('/auth', require('./auth'));
 router.use('/news', require('./news'));
+router.use('/users', require('./users'));
 router.use('/activities', require('./activities'));
 
 module.exports = router;
