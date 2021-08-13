@@ -11,7 +11,7 @@ const { Entries } = require('../models/index');
  *
  */
 
-const getNew = async (req, res) => {
+const getNewsById = async (req, res) => {
   const {id} = req.params; 
   try{
     const entrie = await Entries.findByPk(id)
@@ -101,7 +101,7 @@ const updateNews = async (req, res) => {
   }
 }
 
-module.exports = { getNewsList, postNews, updateNews, getNew }
+module.exports = { getNewsList, postNews, updateNews, getNewsById}
 
 
 

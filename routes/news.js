@@ -21,7 +21,7 @@ const router = Router();
  *
  */
 
-const { getNewsList,postNews, updateNews, getNew } = require('../controllers/news')
+const { getNewsList,postNews, updateNews, getNewsById } = require('../controllers/news')
 
 /*****************************************************************************
  *
@@ -29,7 +29,8 @@ const { getNewsList,postNews, updateNews, getNew } = require('../controllers/new
  *
  */
 router.get('/', getNewsList); 
-router.get('/:id', getNew)
+
+router.get('/:id', getNewsById); 
 
 router.post('/',newsValidator, postNews); 
 
