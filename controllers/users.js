@@ -1,5 +1,6 @@
 const {User} = require('../models/index');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
 
 const getAllUsers = async (req, res) => {
 
@@ -49,11 +50,14 @@ const registerUser = async (req, res) => {
       user = user.dataValues; 
       delete user.password;
       delete user.updatedAt; 
-      delete user.createdAt; 
+      delete user.createdAt;
+      
+      const token = jwt.sign(user, process.env.JWT_SECRET_KEY);
 
       res.status(200).json({
+        ok: true,
         data: user,
-        ok: true
+        token
       })
         
     } catch (error) {
