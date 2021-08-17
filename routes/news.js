@@ -21,7 +21,7 @@ const router = Router();
  *
  */
 
-const { getNewsList,postNews, updateNews, getNewsById } = require('../controllers/news')
+const { getNewsList,postNews, updateNews, getNewsById , deleteNews} = require('../controllers/news')
 
 /*****************************************************************************
  *
@@ -35,5 +35,7 @@ router.get('/:id', getNewsById);
 router.post('/',newsValidator, postNews); 
 
 router.patch('/:id', updateNews); 
+
+router.delete('/:id', deleteNews);
 
 module.exports = router;

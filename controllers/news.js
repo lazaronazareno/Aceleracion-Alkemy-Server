@@ -101,7 +101,33 @@ const updateNews = async (req, res) => {
   }
 }
 
-module.exports = { getNewsList, postNews, updateNews, getNewsById}
+const deleteNews = async (req, res) => {
+  const {id} = req.params;
+  
+  try {
+    foundEntries = await Entries.findByPk(id);
+    if (!foundEntries) {
+      return res.status(404).json({
+        ok: false,
+        msg: `No entries found with id = ${id}`
+      });
+    }
+
+    await Entries.destroy({where:{id}})
+    
+    res.json({
+      ok: true,
+      msg:`Object with id:${id} succesfully deleted` 
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      data: error,
+    });
+  }}
+
+
+module.exports = { getNewsList, postNews, updateNews, getNewsById, deleteNews}
 
 
 
