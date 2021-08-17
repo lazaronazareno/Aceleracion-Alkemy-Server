@@ -1,9 +1,8 @@
-const { Category } = require('../models/index');
+const {categoryRepository} = require('../repositories')
 
 const getCategories = async (req, res) => {
     try {
-        const categories = await Category.findAll({attributes: ['name']});
-
+        const categories = await categoryRepository.getAll();
         return res.status(200).json({
             ok: true,
             data: categories
