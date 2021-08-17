@@ -17,6 +17,23 @@ const getCategories = async (req, res) => {
     }
 }
 
+const createCategory = async (req, res) => {
+    try{
+        const categoryCreated = await Category.create(req.body)
+        return res.status(200).json({
+            ok: true, 
+            data: categoryCreated
+        }); 
+
+    }catch(error){
+        return res.status(400).json({
+            ok: false,
+            error: error
+        }); 
+
+    }
+}
+
 module.exports = {
-    getCategories
+    getCategories, createCategory
 }
