@@ -14,19 +14,21 @@
   */
  
   const contactValidator  = require ('../middleware/validate-contacts')
+  const adminValidator = require ('../middleware/verifyAdmin')
+  const tokenValidator = require('../middleware/verifyToken')
  /*****************************************************************************
   *
   * Controller
   *
   */
  
- const { postContact } = require('../controllers/contacts')
- 
+ const { postContact, getContacts } = require('../controllers/contacts');
  /*****************************************************************************
   *
   * Routes
   *
   */
  router.post('/', contactValidator, postContact); 
+ router.get('/',[tokenValidator, adminValidator], getContacts);
  
  module.exports = router;
