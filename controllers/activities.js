@@ -58,8 +58,26 @@
      })
    }
  }
+
+ const getActivities = async (req, res) => {
+  try {
+    const activitiesList = await Activities.findAll()
+    
+    res.json({
+      ok: true,
+      data: activitiesList
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Unknown error, contact admin',
+      error,
+    });
+  }
+  };
+
  
- module.exports = { postActivities, updateActivity }
+ module.exports = { postActivities, updateActivity, getActivities }
  
  
  
