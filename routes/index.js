@@ -17,5 +17,6 @@ router.use('/users', require('./users'));
 router.use('/activities', require('./activities'));
 router.use('/contacts', require('./contacts'));
 router.use('/categories', require('./categories'));
+router.use('/members', require('./members'));
 
 module.exports = router;
