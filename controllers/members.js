@@ -19,4 +19,26 @@ const getAllMembers = async (req, res) => {
   }
 };
 
-module.exports = {getAllMembers}
+const saveMembers = async (req, res) => {
+    
+  try {
+
+    const newMember = { ...req.body }
+
+    let member = await Members.create(newMember);
+    member = member.dataValues; 
+
+    res.status(200).json({
+      ok: true,
+      data: member
+    })
+      
+  } catch (error) {
+    res.status(500).json({
+    data: error,
+    ok: false
+    })
+  }
+};
+
+module.exports = {getAllMembers, saveMembers}
