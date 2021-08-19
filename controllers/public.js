@@ -32,12 +32,27 @@
 const getPublicData = async (req, res) => {
   try {
 
-    const data = await Public.findAll(
+    const socialNetworks={ 
+      instagram:'https://www.instagram.com',
+      twitter:'https://twitter.com/',
+      facebook:'https://facebook.com/',
+      whatsapp:'https://web.whatsapp.com/'
+    }
+
+    const [public] = await Public.findAll(
       { attributes: ['name', 'image', 'phone', 'address', 'welcomeText'] });
+
+      const publicSocialN = {
+        ...public.dataValues,
+        linkInstagram: socialNetworks.instagram,
+        linkTwitter: socialNetworks.twitter,
+        linkFacebook: socialNetworks.facebook,
+        linkWhatsapp: socialNetworks.whatsapp
+      }
 
     res.json({
       ok: true,
-      data: data 
+      data: publicSocialN
     });
   } catch (error) {
     res.status(500).json({
