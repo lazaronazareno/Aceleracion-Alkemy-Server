@@ -42,7 +42,53 @@ const deleteTestimonial = async (req, res) => {
   }
 };
 
+const updateTestimonial = async (req, res) => {
+  const { id } = req.params;
+  const updatedData = req.body;
+
+  try {
+    const foundTestimonials = await Testimonial.findByPk(id);
+    if (!foundTestimonials) {
+      return res.status(404).json({
+        ok: false,
+        msg: `No testimonials found with id= ${id}`
+      });
+    }
+    const updatedTestimonial = await foundTestimonials.update(updatedData);
+    res.status(200).json({
+      data: updatedTestimonial,
+      ok: true
+    })
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Unknown error, contact admin',
+      error,
+    });
+  }
+}
+
+const getTestimonialsList = async (req, res) => {
+  try {
+    const testimonials = await Testimonial.findAll();
+
+    res.json({
+      data: testimonials,
+      ok: true
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      msg: 'Unknown error, contact admin',
+      error,
+    });
+  }
+};
+
+
 module.exports = {
   createTestimonial,
   deleteTestimonial,
+  updateTestimonial,
+  getTestimonialsList
 };

@@ -22,7 +22,7 @@ const tokenValidator = require('../middleware/verifyToken');
  *
  */
 
-const { createTestimonial, deleteTestimonial } = require('../controllers/testimonial');
+const { createTestimonial, deleteTestimonial, updateTestimonial, getTestimonialsList } = require('../controllers/testimonial');
 
 /*****************************************************************************
  *
@@ -31,5 +31,7 @@ const { createTestimonial, deleteTestimonial } = require('../controllers/testimo
  */
 router.post('/', [tokenValidator, adminValidator, activitiesValidator], createTestimonial);
 router.delete('/', [tokenValidator, adminValidator, deleteTestimonial], createTestimonial);
+router.put('/:id',[tokenValidator, adminValidator],updateTestimonial); 
+router.get('/', getTestimonialsList)
 
 module.exports = router;
