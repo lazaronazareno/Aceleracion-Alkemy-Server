@@ -10,7 +10,7 @@ const createTestimonial = async (req, res) => {
   } catch (error) {
     return res.status(500).json({
       ok: false,
-      error: error,
+      error,
     });
   }
 };
@@ -19,7 +19,7 @@ const deleteTestimonial = async (req, res) => {
   const { id } = req.params;
 
   try {
-    testimonial = await Testimonial.findByPk(id);
+    const testimonial = await Testimonial.findByPk(id);
 
     if (!testimonial) {
       return res.status(404).json({
