@@ -23,7 +23,7 @@ const create = async (entity, data={}) => {
 
 const destroy = async (entity, id) => {
     try{
-        const rowDeleted = await db[entity].destroy({where: id}); 
+        const rowDeleted = await db[entity].destroy({where: {id:id}}); 
         return rowDeleted; 
     }catch(error){
         return; 
