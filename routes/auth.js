@@ -13,6 +13,7 @@ const router = Router();
  */
 const validateLogin = require('../middleware/validate-login');
 const verifyToken = require('../middleware/verifyToken');
+const getRoutes = require('../middleware/getRoutes');
 
 /*****************************************************************************
  *
@@ -27,6 +28,6 @@ const { login, getUserInfo } = require('../controllers/auth');
  *
  */
 router.post('/login', validateLogin, login);
-router.get('/me', verifyToken, getUserInfo);
+router.get('/me', [verifyToken, getRoutes], getUserInfo);
 
 module.exports = router;
