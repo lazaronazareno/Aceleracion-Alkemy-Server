@@ -4,7 +4,7 @@ const entity = 'Category';
 
 const getAll = async () => {
     try{
-        const customQuery = {attributes: ['name']}
+        const customQuery = {attributes: ['name', 'id']}
         const allCategories = await baseRepository.getAll(entity, customQuery); 
         return allCategories; 
     }catch(error){

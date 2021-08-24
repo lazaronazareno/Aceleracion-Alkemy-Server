@@ -31,7 +31,8 @@
 
 const getPublicData = async (req, res) => {
   try {
-
+    const publicRoutes = ['/nosotros','/actividades','/actividades/:id','/novedades','/novedades/:id',
+                        '/testimonios','/testimonios/:id','/contacto','/contribuye']
     const socialNetworks={ 
       instagram:'https://www.instagram.com',
       twitter:'https://twitter.com/',
@@ -39,20 +40,21 @@ const getPublicData = async (req, res) => {
       whatsapp:'https://web.whatsapp.com/'
     }
 
-    const [public] = await Public.findAll(
+    const public = await Public.findAll(
       { attributes: ['name', 'image', 'phone', 'address', 'welcomeText'] });
 
-      const publicSocialN = {
-        ...public.dataValues,
-        linkInstagram: socialNetworks.instagram,
-        linkTwitter: socialNetworks.twitter,
-        linkFacebook: socialNetworks.facebook,
-        linkWhatsapp: socialNetworks.whatsapp
-      }
+    const publicSocialN = {
+      ...public.dataValues,
+      linkInstagram: socialNetworks.instagram,
+      linkTwitter: socialNetworks.twitter,
+      linkFacebook: socialNetworks.facebook,
+      linkWhatsapp: socialNetworks.whatsapp,
+    }
 
     res.json({
       ok: true,
-      data: publicSocialN
+      data: publicSocialN,
+      routes: publicRoutes
     });
   } catch (error) {
     res.status(500).json({
