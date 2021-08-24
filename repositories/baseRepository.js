@@ -24,16 +24,16 @@ const create = async (entity, data={}) => {
 const destroy = async (entity, id) => {
     try{
         const rowDeleted = await db[entity].destroy({where: {id:id}}); 
+        console.log('rowDeleted',rowDeleted)
         return rowDeleted; 
     }catch(error){
         return; 
     }
 }
 
-const update = async (entity, data) => {
+const update = async (entity, id,data) => {
     try{
-        const {id} = data
-        const rowUpdated = await db[entity].update(data, {where: id}); 
+        const rowUpdated = await db[entity].update(data,{where: {id:id}}); 
         return rowUpdated; 
     }catch(error){
         return; 

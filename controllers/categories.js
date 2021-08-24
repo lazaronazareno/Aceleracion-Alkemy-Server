@@ -18,7 +18,7 @@ const getCategories = async (req, res) => {
 
 const createCategory = async (req, res) => {
     try{
-        const categoryCreated = await categoryRepository.create(req.body);
+        const categoryCreated = await categoryRepository.createCategory(req.body);
         return res.status(200).json({
             ok: true, 
             data: categoryCreated
@@ -56,6 +56,31 @@ const deleteCategory = async (req, res) => {
     }
 }
 
+const updateCategory = async (req, res) => {
+    const { id } = req.params; 
+    const data = req.body;
+
+    try{
+        const categoryUpdated = await categoryRepository.updateCategory(id,data); 
+        
+        if (categoryUpdated === 0){
+            return res.status(404).json({
+                ok: false, 
+                error: 'Category not found'
+            }); 
+        }
+        return res.status(200).json({
+            ok: true, 
+            msg: `Category with id: ${id} successfully updated!`
+        }); 
+    }catch(error){
+        return res.status(500).json({
+            ok: false, 
+            error: error
+        })
+    }
+}
+
 module.exports = {
-    getCategories, createCategory, deleteCategory
+    getCategories, createCategory, deleteCategory,updateCategory
 }

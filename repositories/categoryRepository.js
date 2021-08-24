@@ -39,9 +39,9 @@ const destroyCategory = async (id) => {
     }
 }
 
-const updateCategory = async (data) => {
+const updateCategory = async (data,id) => {
     try {
-        const categoryUpdated = await baseRepository.update(entity, data); 
+        const categoryUpdated = await baseRepository.update(entity, data,id); 
         return categoryUpdated; 
     }catch(error){
         return ;
