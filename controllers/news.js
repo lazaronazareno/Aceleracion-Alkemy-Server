@@ -33,7 +33,7 @@ const getNewsById = async (req, res) => {
 const getNewsList = async (req, res) => {
   try {
     const entries = await Entries.findAll(
-      { attributes: ['name', 'image', 'createdAt'] },
+      { attributes: ['name', 'image', 'createdAt', 'id'] },
       { where: { type: 'news' }, raw: true });
 
     res.json({

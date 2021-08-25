@@ -22,7 +22,7 @@
   *
   */
  
- const { postActivities, updateActivity, getActivities } = require('../controllers/activities')
+ const { postActivities, updateActivity, getActivities, getActivitiesById } = require('../controllers/activities')
  
  /*****************************************************************************
   *
@@ -31,7 +31,8 @@
   */
  router.post('/', [tokenValidator,adminValidator, activitiesValidator], postActivities); 
  router.patch('/:id',[tokenValidator, adminValidator], updateActivity);
- router.get('/',getActivities) 
+ router.get('/',getActivities)
+ router.get('/:id', getActivitiesById) 
  
  module.exports = router;
  
