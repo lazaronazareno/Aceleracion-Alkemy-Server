@@ -41,11 +41,11 @@ const getPublicData = async (req, res) => {
       whatsapp:'https://web.whatsapp.com/'
     }
 
-    const public = await Public.findAll(
+    const publico = await Public.findAll(
       { attributes: ['name', 'image', 'phone', 'address', 'welcomeText'] });
 
     const publicSocialN = {
-      ...public.dataValues,
+      ...publico.dataValues,
       linkInstagram: socialNetworks.instagram,
       linkTwitter: socialNetworks.twitter,
       linkFacebook: socialNetworks.facebook,
