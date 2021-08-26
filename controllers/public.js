@@ -32,7 +32,8 @@
 const getPublicData = async (req, res) => {
   try {
     const publicRoutes = ['/nosotros','/actividades','/actividades/:id','/novedades','/novedades/:id',
-                        '/testimonios','/testimonios/:id','/contacto','/contribuye']
+                        '/testimonios','/testimonios/:id','/contacto','/contribuye',
+                        '/login', '/register']
     const socialNetworks={ 
       instagram:'https://www.instagram.com',
       twitter:'https://twitter.com/',
