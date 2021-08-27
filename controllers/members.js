@@ -1,11 +1,11 @@
-const {memberRepository} = require('../repositories')
+const {Members} = require('../models/index');
 
 const getAllMembers = async (req, res) => {
 
   try {
 
-      const members = await memberRepository.getAll();
-      console.log(members)
+      const members = await Members.findAll({attributes: ['name', 'image']});
+
       return res.status(200).json({
         data: members,
         ok: true
@@ -25,11 +25,12 @@ const saveMembers = async (req, res) => {
 
     const newMember = { ...req.body }
 
-    const member = await memberRepository.create(newMember);
+    let member = await Members.create(newMember);
+    member = member.dataValues; 
 
     res.status(200).json({
       ok: true,
-      data: member.dataValues
+      data: member
     })
       
   } catch (error) {
@@ -46,7 +47,7 @@ const updateMembers = async (req, res) => {
 
   try {
    
-    const foundMembers = await memberRepository.getMember({id:id});
+    const foundMembers = await Members.findByPk(id);
 
     if (!foundMembers) {
       return res.status(404).json({
@@ -55,10 +56,10 @@ const updateMembers = async (req, res) => {
       });
     }
 
-    const memberUpdated = await memberRepository.updateMember(dataUpdated, id);
+    const memberUpdated = await foundMembers.update(dataUpdated);
 
     res.status(200).json({
-      data: memberUpdated.dataValues,
+      data: memberUpdated,
       ok: true
     })
   } catch (error) {
@@ -74,7 +75,7 @@ const deleteMembers = async (req, res) => {
   const {id} = req.params;
   
   try {
-    const foundMembers = await memberRepository.getMember({id:id});
+    foundMembers = await Members.findByPk(id);
     if (!foundMembers) {
       return res.status(404).json({
         ok: false,
@@ -82,7 +83,7 @@ const deleteMembers = async (req, res) => {
       });
     }
 
-    await memberRepository.destroyMember(id)
+    await Members.destroy({where:{id}})
     
     res.json({
       ok: true,

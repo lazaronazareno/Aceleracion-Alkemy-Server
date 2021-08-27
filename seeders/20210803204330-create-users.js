@@ -12,6 +12,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 2,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
       {
       firstName: 'Jack',
@@ -21,6 +23,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 2,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
       {
       firstName: "Milena",
@@ -30,6 +34,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10), 
       roleId: 2,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -40,6 +46,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 2,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -50,6 +58,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 2,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -60,6 +70,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 2,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -70,6 +82,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 2,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -80,6 +94,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 2,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -90,6 +106,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 2,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -100,6 +118,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 2,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     //Usuarios con Roles de administrador//
@@ -111,6 +131,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 1,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -121,6 +143,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 1,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -131,6 +155,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 1,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -141,6 +167,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 1,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -151,6 +179,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 1,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -161,6 +191,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 1,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -171,6 +203,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 1,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -181,6 +215,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 1,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -191,6 +227,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 1,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
 
     {
@@ -201,6 +239,8 @@ module.exports = {
       password: bcrypt.hashSync('1234', 10),
       roleId: 1,
       deletedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
   ])  
 },

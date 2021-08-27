@@ -18,10 +18,15 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     phone: DataTypes.STRING,
     address: DataTypes.STRING,
-    welcomeText: DataTypes.STRING
+    welcomeText: DataTypes.STRING,
+    linkInstagram:DataTypes.STRING,
+    linkFacebook:DataTypes.STRING,
+    linkTwitter:DataTypes.STRING,
+    linkWhatsapp:DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Public',
-  });
+  })
+  ;
   return Public;
 };

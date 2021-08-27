@@ -4,6 +4,7 @@ const getAll = async (entity, customQuery=null) => {
     console.log('en base')
     try{
         const allRows = await db[entity].findAll(customQuery); 
+        console.log(allRows)
         return allRows; 
     }catch(error){
         console.log(error)

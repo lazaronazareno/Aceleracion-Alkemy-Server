@@ -30,7 +30,7 @@ const { createTestimonial, deleteTestimonial, updateTestimonial, getTestimonials
  *
  */
 router.post('/', [tokenValidator, adminValidator, activitiesValidator], createTestimonial);
-router.delete('/:id', [tokenValidator, adminValidator], deleteTestimonial);
+router.delete('/', [tokenValidator, adminValidator, deleteTestimonial], createTestimonial);
 router.put('/:id',[tokenValidator, adminValidator],updateTestimonial); 
 router.get('/', getTestimonialsList)
 

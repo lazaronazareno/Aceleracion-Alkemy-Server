@@ -13,7 +13,7 @@
     const data = {
       ...req.body,
     }
-
+       
     await Public.create(data);
 
     res.status(200).json({
@@ -54,7 +54,7 @@ const getPublicData = async (req, res) => {
 
     res.json({
       ok: true,
-      data: publicSocialN,
+      data: public,
       routes: publicRoutes
     });
   } catch (error) {
@@ -65,5 +65,6 @@ const getPublicData = async (req, res) => {
     });
   }
 };
+
 
 module.exports = { postPublic,getPublicData }
