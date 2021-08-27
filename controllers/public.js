@@ -34,37 +34,21 @@ const getPublicData = async (req, res) => {
     const publicRoutes = ['/nosotros','/actividades','/actividades/:id','/novedades','/novedades/:id',
                         '/testimonios','/testimonios/:id','/contacto','/contribuye',
                         '/login', '/register']
-    const socialNetworks={ 
-      instagram:'https://www.instagram.com',
-      twitter:'https://twitter.com/',
-      facebook:'https://facebook.com/',
-      whatsapp:'https://web.whatsapp.com/'
-    }
-
-    const publico = await Public.findAll(
-      { attributes: ['name', 'image', 'phone', 'address', 'welcomeText'] });
-
-    const publicSocialN = {
-      ...publico.dataValues,
-      linkInstagram: socialNetworks.instagram,
-      linkTwitter: socialNetworks.twitter,
-      linkFacebook: socialNetworks.facebook,
-      linkWhatsapp: socialNetworks.whatsapp,
-    }
-
-    res.json({
-      ok: true,
-      data: publico,
-      routes: publicRoutes
-    });
-  } catch (error) {
-    res.status(500).json({
+    
+    const publico = await Public.findOne({
+      where: {name:'Somos Mas'}})
+        res.json({
+        ok: true,
+        data: publico,
+        routes: publicRoutes
+        });
+    }catch (error) {
+      res.status(500).json({
       ok: false,
       msg: 'Unknown error, contact admin',
       error,
-    });
-  }
-};
-
+      });
+    }
+  };
 
 module.exports = { postPublic,getPublicData }
