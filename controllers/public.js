@@ -54,7 +54,7 @@ const getPublicData = async (req, res) => {
 
     res.json({
       ok: true,
-      data: public,
+      data: publico,
       routes: publicRoutes
     });
   } catch (error) {
