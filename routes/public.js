@@ -12,15 +12,16 @@
   * Middlewares
   *
   */
- 
- 
+  const publicValidator= require ('../middleware/validate-public')
+  const adminValidator = require('../middleware/verifyAdmin');
+  const tokenValidator = require('../middleware/verifyToken');
  /*****************************************************************************
   *
   * Controller
   *
   */
  
- const { postPublic, getPublicData } = require('../controllers/public')
+ const { postPublic, getPublicData, deletePublic } = require('../controllers/public')
  
  /*****************************************************************************
   *
@@ -28,9 +29,9 @@
   *
   */
  
- router.post('/public', postPublic); 
  router.get('/public', getPublicData); 
- 
+ router.post('/public',[tokenValidator, adminValidator,publicValidator], postPublic); 
+ router.delete('/public/:id',[tokenValidator, adminValidator], deletePublic);
  
  module.exports = router;
  

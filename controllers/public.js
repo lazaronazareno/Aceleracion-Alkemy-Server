@@ -51,4 +51,32 @@ const getPublicData = async (req, res) => {
     }
   };
 
-module.exports = { postPublic,getPublicData }
+  
+const deletePublic = async (req, res) => {
+  const {id} = req.params;
+  console.log('busco el id de params',id)
+  try {
+    foundOrg = await Public.findByPk(id);
+    console.log('foundOrg',foundOrg)
+    if (!foundOrg) {
+      return res.status(404).json({
+        ok: false,
+        msg: `No organizations found with id = ${id}`
+      });
+    }
+
+    await Public.destroy({where:{id}})
+    
+    res.json({
+      ok: true,
+      msg:`Object with id:${id} succesfully deleted` 
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      data: error,
+    });
+  }}
+
+
+module.exports = { postPublic,getPublicData,deletePublic }
