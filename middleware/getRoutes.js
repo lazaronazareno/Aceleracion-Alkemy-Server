@@ -12,7 +12,7 @@ const getRoutes = async (req, res, next) => {
                                     '/backoffice/actividades/:id','/backoffice/novedades',
                                     '/backoffice/novedades/:id', '/backoffice/testimonios',
                                     '/backoffice/testimonios/:id','/backoffice/contactos',
-                                    '/backoffice/inicio'])
+                                    '/backoffice/inicio', '/backoffice/'])
     }
     try {
         const { user } = req; 
