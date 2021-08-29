@@ -3,7 +3,7 @@ const {Role} = require('../models/')
 const getRoutes = async (req, res, next) => {
     				
     const publicRoutes = ['/nosotros','/actividades','/actividades/:id','/novedades','/novedades/:id',
-                        '/testimonios','/testimonios/:id','/contacto','/contribuye']
+                        '/testimonios','/testimonios/:id','/contacto','/contribuye','/editUser', '/user']
     const privateRoutes = publicRoutes.concat(['/editUser', '/user']);
     				
     const routes = {
