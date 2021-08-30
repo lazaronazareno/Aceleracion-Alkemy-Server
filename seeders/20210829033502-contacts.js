@@ -19,7 +19,7 @@ module.exports = {
         phone: '12345678',
         email: 'mail@mail.com',
         message: 'Mensaje de contacto 3'
-     }], {});
+     }],{});
   
   },
 
